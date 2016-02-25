@@ -38,6 +38,8 @@
     HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"Four", @"Five", @"Six", @"Seven", @"Eight"]];
     segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     segmentedControl1.frame = CGRectMake(0, 60, viewWidth, 40);
+    segmentedControl1.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleCustomWidth;
+    segmentedControl1.customSegmentWidth = 120.f;
     segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
     segmentedControl1.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     segmentedControl1.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;

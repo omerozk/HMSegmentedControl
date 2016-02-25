@@ -29,6 +29,7 @@ typedef enum {
 typedef enum {
     HMSegmentedControlSegmentWidthStyleFixed, // Segment width is fixed
     HMSegmentedControlSegmentWidthStyleDynamic, // Segment width will only be as big as the text width (including inset)
+    HMSegmentedControlSegmentWidthStyleCustomWidth, // Segment width will be specified by property customSegmentWidth (Only for HMSegmentedControlTypeText)
 } HMSegmentedControlSegmentWidthStyle;
 
 typedef NS_OPTIONS(NSInteger, HMSegmentedControlBorderType) {
@@ -54,6 +55,13 @@ typedef enum {
 @property (nonatomic, strong) NSArray *sectionTitles;
 @property (nonatomic, strong) NSArray *sectionImages;
 @property (nonatomic, strong) NSArray *sectionSelectedImages;
+
+/**
+ *  Assign a custom segment Width to each segment
+ *
+ *  Default is 100.f
+ */
+@property (nonatomic, assign) CGFloat   customSegmentWidth;
 
 /**
  Provide a block to be executed when selected index is changed.
