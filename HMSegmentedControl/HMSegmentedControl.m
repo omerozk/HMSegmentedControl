@@ -160,6 +160,7 @@
     self.selectionIndicatorBoxOpacity = 0.2;
     
     self.customSegmentWidth = 100.f;
+    self.backgroundColorFrameWidthType = HMSegmentedControlBackgroundColorFrameWidthSuperViewWidth;
     
     self.contentMode = UIViewContentModeRedraw;
 }
@@ -264,7 +265,20 @@
 
 - (void)drawRect:(CGRect)rect {
     [self.backgroundColor setFill];
-    UIRectFill([self bounds]);
+    
+    // omer: change size width to size of segmentWdithsArray content
+    // to have separate superview background color and HMSegmentedControl View background color
+    CGRect bounds = [self bounds];
+    if (self.backgroundColorFrameWidthType == HMSegmentedControlBackgroundColorFrameWidthSegmentsWidth &&
+        self.segmentWidthsArray) {
+        CGFloat totalWidth = 0.f;
+        
+        for (NSNumber *width in self.segmentWidthsArray) {
+            totalWidth += [width floatValue];
+        }
+        bounds.size.width = totalWidth;
+    }
+    UIRectFill(bounds);
     
     self.selectionIndicatorArrowLayer.backgroundColor = self.selectionIndicatorColor.CGColor;
     

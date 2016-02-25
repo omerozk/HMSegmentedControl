@@ -14,6 +14,11 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 typedef NSAttributedString *(^HMTitleFormatterBlock)(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
 
 typedef enum {
+    HMSegmentedControlBackgroundColorFrameWidthSuperViewWidth, // will set the background color over all the superview frame
+    HMSegmentedControlBackgroundColorFrameWidthSegmentsWidth // will set the background color only behind the segment
+} HMSegmentedControlBackgroundColorFrameWidthType;
+
+typedef enum {
     HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
     HMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
     HMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
@@ -62,6 +67,13 @@ typedef enum {
  *  Default is 100.f
  */
 @property (nonatomic, assign) CGFloat   customSegmentWidth;
+
+/**
+ *  Assign background color onyl behind segmented control views or all over the superview
+ *
+ *  Default is HMSegmentedControlBackgroundColorFrameWidthSuperViewWidth
+ */
+@property (nonatomic, assign) HMSegmentedControlBackgroundColorFrameWidthType   backgroundColorFrameWidthType UI_APPEARANCE_SELECTOR;
 
 /**
  Provide a block to be executed when selected index is changed.
